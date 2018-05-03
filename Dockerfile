@@ -33,6 +33,7 @@ RUN apk add --no-cache \
 RUN apk add --no-cache --virtual .rubymakedepends \
     build-base \
     libxml2-dev \
+    libxslt-dev \
     ruby-dev \
   && gem install --no-document \
     "asciidoctor:${ASCIIDOCTOR_VERSION}" \
@@ -42,6 +43,7 @@ RUN apk add --no-cache --virtual .rubymakedepends \
     asciidoctor-mathematical \
     "asciidoctor-pdf:${ASCIIDOCTOR_PDF_VERSION}" \
     asciidoctor-revealjs \
+    asciidoctor-bibtex:0.3.1 \
     coderay \
     epubcheck:3.0.1 \
     haml \
