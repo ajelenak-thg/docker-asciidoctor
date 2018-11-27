@@ -2,7 +2,7 @@ FROM alpine:3.7
 
 LABEL MAINTAINERS="Guillaume Scheibel <guillaume.scheibel@gmail.com>, Damien DUPORTAL <damien.duportal@gmail.com>"
 
-ARG asciidoctor_version=1.5.7.1
+ARG asciidoctor_version=1.5.8
 ARG asciidoctor_pdf_version=1.5.0.alpha.16
 
 ENV ASCIIDOCTOR_VERSION=${asciidoctor_version} \
@@ -17,6 +17,7 @@ RUN apk add --no-cache \
     findutils \
     font-bakoma-ttf \
     graphviz \
+    inotify-tools \
     make \
     openjdk8-jre \
     py2-pillow \
@@ -41,6 +42,7 @@ RUN apk add --no-cache --virtual .rubymakedepends \
     asciidoctor-diagram \
     asciidoctor-epub3:1.5.0.alpha.7 \
     asciidoctor-mathematical \
+    asciimath \
     "asciidoctor-pdf:${ASCIIDOCTOR_PDF_VERSION}" \
     asciidoctor-revealjs \
     asciidoctor-bibtex:0.3.1 \
@@ -62,6 +64,7 @@ RUN apk add --no-cache --virtual .pythonmakedepends \
     build-base \
     python2-dev \
     py2-pip \
+  && pip install --upgrade pip \
   && pip install --no-cache-dir \
     actdiag \
     'blockdiag[pdf]' \
